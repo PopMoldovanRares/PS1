@@ -1,0 +1,9 @@
+C:\CURSURI\An3_Sem1\PS1\interfata\serialComunication\serialComunication\bin\Debug\serialComunication.exe.config
+C:\CURSURI\An3_Sem1\PS1\interfata\serialComunication\serialComunication\obj\Debug\serialComunication.csprojResolveAssemblyReference.cache
+C:\CURSURI\An3_Sem1\PS1\interfata\serialComunication\serialComunication\obj\Debug\serialComunication.ProiectArduino.resources
+C:\CURSURI\An3_Sem1\PS1\interfata\serialComunication\serialComunication\obj\Debug\serialComunication.Properties.Resources.resources
+C:\CURSURI\An3_Sem1\PS1\interfata\serialComunication\serialComunication\obj\Debug\serialComunication.csproj.GenerateResource.Cache
+C:\CURSURI\An3_Sem1\PS1\interfata\serialComunication\serialComunication\bin\Debug\serialComunication.exe
+C:\CURSURI\An3_Sem1\PS1\interfata\serialComunication\serialComunication\bin\Debug\serialComunication.pdb
+C:\CURSURI\An3_Sem1\PS1\interfata\serialComunication\serialComunication\obj\Debug\serialComunication.exe
+C:\CURSURI\An3_Sem1\PS1\interfata\serialComunication\serialComunication\obj\Debug\serialComunication.pdb

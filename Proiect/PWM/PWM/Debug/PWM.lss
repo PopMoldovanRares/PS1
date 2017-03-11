@@ -1,0 +1,406 @@
+
+PWM.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  000002b8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000244  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000004  00800100  00800100  000002b8  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000002b8  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000002e8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000040  00000000  00000000  00000328  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000733  00000000  00000000  00000368  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000067e  00000000  00000000  00000a9b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000002f6  00000000  00000000  00001119  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000078  00000000  00000000  00001410  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000386  00000000  00000000  00001488  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000049  00000000  00000000  0000180e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000030  00000000  00000000  00001857  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 e1 00 	jmp	0x1c2	; 0x1c2 <__vector_16>
+  44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	21 e0       	ldi	r18, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a4 30       	cpi	r26, 0x04	; 4
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 50 00 	call	0xa0	; 0xa0 <main>
+  88:	0c 94 20 01 	jmp	0x240	; 0x240 <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <timer0Initializare>:
+  }
+
+void initializare()
+{
+	// put your setup code here, to run once:
+	DDRB = 0xFF;
+  90:	83 e8       	ldi	r24, 0x83	; 131
+  92:	84 bd       	out	0x24, r24	; 36
+  94:	81 e0       	ldi	r24, 0x01	; 1
+  96:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <__TEXT_REGION_LENGTH__+0x7e006e>
+  9a:	84 e0       	ldi	r24, 0x04	; 4
+  9c:	85 bd       	out	0x25, r24	; 37
+  9e:	08 95       	ret
+
+000000a0 <main>:
+  a0:	8f ef       	ldi	r24, 0xFF	; 255
+  a2:	84 b9       	out	0x04, r24	; 4
+
+
+int main()
+{
+	initializare();
+	timer0Initializare();
+  a4:	0e 94 48 00 	call	0x90	; 0x90 <timer0Initializare>
+	//timer1_setup();
+	sei();
+  a8:	78 94       	sei
+		while(contorTimer0 >= 250 && contorTimer0 < 500)
+		{
+			if(contorTimer0 != 500)
+			{
+				val+=1;
+				PORTB ^= LEDPWM;
+  aa:	22 e0       	ldi	r18, 0x02	; 2
+			}
+			OCR0A=val/255;
+  ac:	ef ef       	ldi	r30, 0xFF	; 255
+  ae:	f0 e0       	ldi	r31, 0x00	; 0
+		}
+
+		while(contorTimer0 >=500 && contorTimer0<725)
+		{
+			OCR0A=255;
+  b0:	3f ef       	ldi	r19, 0xFF	; 255
+  b2:	01 c0       	rjmp	.+2      	; 0xb6 <main+0x16>
+	while(1)
+	{
+		
+		while(contorTimer0 < 250)
+		{
+			OCR0A=0; //led stins
+  b4:	17 bc       	out	0x27, r1	; 39
+	//timer1_setup();
+	sei();
+	while(1)
+	{
+		
+		while(contorTimer0 < 250)
+  b6:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <contorTimer0>
+  ba:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <contorTimer0+0x1>
+  be:	8a 3f       	cpi	r24, 0xFA	; 250
+  c0:	91 05       	cpc	r25, r1
+  c2:	c4 f3       	brlt	.-16     	; 0xb4 <main+0x14>
+		{
+			OCR0A=0; //led stins
+			//PORTB ^= LEDPWM;
+		}	
+		
+		while(contorTimer0 >= 250 && contorTimer0 < 500)
+  c4:	ac 01       	movw	r20, r24
+  c6:	4a 5f       	subi	r20, 0xFA	; 250
+  c8:	51 09       	sbc	r21, r1
+  ca:	4a 3f       	cpi	r20, 0xFA	; 250
+  cc:	51 05       	cpc	r21, r1
+  ce:	08 f5       	brcc	.+66     	; 0x112 <main+0x72>
+		{
+			if(contorTimer0 != 500)
+  d0:	84 3f       	cpi	r24, 0xF4	; 244
+  d2:	91 40       	sbci	r25, 0x01	; 1
+  d4:	61 f0       	breq	.+24     	; 0xee <main+0x4e>
+			{
+				val+=1;
+  d6:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+  da:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <_edata+0x1>
+  de:	01 96       	adiw	r24, 0x01	; 1
+  e0:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <_edata+0x1>
+  e4:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
+				PORTB ^= LEDPWM;
+  e8:	85 b1       	in	r24, 0x05	; 5
+  ea:	82 27       	eor	r24, r18
+  ec:	85 b9       	out	0x05, r24	; 5
+			}
+			OCR0A=val/255;
+  ee:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+  f2:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <_edata+0x1>
+  f6:	bf 01       	movw	r22, r30
+  f8:	0e 94 f8 00 	call	0x1f0	; 0x1f0 <__divmodhi4>
+  fc:	67 bd       	out	0x27, r22	; 39
+		{
+			OCR0A=0; //led stins
+			//PORTB ^= LEDPWM;
+		}	
+		
+		while(contorTimer0 >= 250 && contorTimer0 < 500)
+  fe:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <contorTimer0>
+ 102:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <contorTimer0+0x1>
+ 106:	ac 01       	movw	r20, r24
+ 108:	4a 5f       	subi	r20, 0xFA	; 250
+ 10a:	51 09       	sbc	r21, r1
+ 10c:	4a 3f       	cpi	r20, 0xFA	; 250
+ 10e:	51 05       	cpc	r21, r1
+ 110:	f8 f2       	brcs	.-66     	; 0xd0 <main+0x30>
+				PORTB ^= LEDPWM;
+			}
+			OCR0A=val/255;
+		}
+
+		while(contorTimer0 >=500 && contorTimer0<725)
+ 112:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <contorTimer0>
+ 116:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <contorTimer0+0x1>
+ 11a:	84 5f       	subi	r24, 0xF4	; 244
+ 11c:	91 40       	sbci	r25, 0x01	; 1
+ 11e:	81 3e       	cpi	r24, 0xE1	; 225
+ 120:	91 05       	cpc	r25, r1
+ 122:	68 f4       	brcc	.+26     	; 0x13e <main+0x9e>
+		{
+			OCR0A=255;
+ 124:	37 bd       	out	0x27, r19	; 39
+			PORTB ^= LEDPWM;
+ 126:	85 b1       	in	r24, 0x05	; 5
+ 128:	82 27       	eor	r24, r18
+ 12a:	85 b9       	out	0x05, r24	; 5
+				PORTB ^= LEDPWM;
+			}
+			OCR0A=val/255;
+		}
+
+		while(contorTimer0 >=500 && contorTimer0<725)
+ 12c:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <contorTimer0>
+ 130:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <contorTimer0+0x1>
+ 134:	84 5f       	subi	r24, 0xF4	; 244
+ 136:	91 40       	sbci	r25, 0x01	; 1
+ 138:	81 3e       	cpi	r24, 0xE1	; 225
+ 13a:	91 05       	cpc	r25, r1
+ 13c:	98 f3       	brcs	.-26     	; 0x124 <main+0x84>
+		{
+			OCR0A=255;
+			PORTB ^= LEDPWM;
+		}
+
+		while(contorTimer0 >725 && contorTimer0<990)
+ 13e:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <contorTimer0>
+ 142:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <contorTimer0+0x1>
+ 146:	ac 01       	movw	r20, r24
+ 148:	46 5d       	subi	r20, 0xD6	; 214
+ 14a:	52 40       	sbci	r21, 0x02	; 2
+ 14c:	48 30       	cpi	r20, 0x08	; 8
+ 14e:	51 40       	sbci	r21, 0x01	; 1
+ 150:	08 f5       	brcc	.+66     	; 0x194 <main+0xf4>
+		{
+			if(contorTimer0 != 990)
+ 152:	8e 3d       	cpi	r24, 0xDE	; 222
+ 154:	93 40       	sbci	r25, 0x03	; 3
+ 156:	61 f0       	breq	.+24     	; 0x170 <main+0xd0>
+			{
+				val-=1;
+ 158:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 15c:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <_edata+0x1>
+ 160:	01 97       	sbiw	r24, 0x01	; 1
+ 162:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <_edata+0x1>
+ 166:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
+				PORTB ^= LEDPWM;
+ 16a:	85 b1       	in	r24, 0x05	; 5
+ 16c:	82 27       	eor	r24, r18
+ 16e:	85 b9       	out	0x05, r24	; 5
+			}
+			OCR0A=val/255;
+ 170:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 174:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <_edata+0x1>
+ 178:	bf 01       	movw	r22, r30
+ 17a:	0e 94 f8 00 	call	0x1f0	; 0x1f0 <__divmodhi4>
+ 17e:	67 bd       	out	0x27, r22	; 39
+		{
+			OCR0A=255;
+			PORTB ^= LEDPWM;
+		}
+
+		while(contorTimer0 >725 && contorTimer0<990)
+ 180:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <contorTimer0>
+ 184:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <contorTimer0+0x1>
+ 188:	ac 01       	movw	r20, r24
+ 18a:	46 5d       	subi	r20, 0xD6	; 214
+ 18c:	52 40       	sbci	r21, 0x02	; 2
+ 18e:	48 30       	cpi	r20, 0x08	; 8
+ 190:	51 40       	sbci	r21, 0x01	; 1
+ 192:	f8 f2       	brcs	.-66     	; 0x152 <main+0xb2>
+				PORTB ^= LEDPWM;
+			}
+			OCR0A=val/255;
+		}
+
+		while(contorTimer0 >= 990)
+ 194:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <contorTimer0>
+ 198:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <contorTimer0+0x1>
+ 19c:	8e 3d       	cpi	r24, 0xDE	; 222
+ 19e:	93 40       	sbci	r25, 0x03	; 3
+ 1a0:	0c f4       	brge	.+2      	; 0x1a4 <main+0x104>
+ 1a2:	89 cf       	rjmp	.-238    	; 0xb6 <main+0x16>
+		{
+			contorTimer0 = 0;
+ 1a4:	10 92 03 01 	sts	0x0103, r1	; 0x800103 <contorTimer0+0x1>
+ 1a8:	10 92 02 01 	sts	0x0102, r1	; 0x800102 <contorTimer0>
+			PORTB ^= LEDPWM;
+ 1ac:	85 b1       	in	r24, 0x05	; 5
+ 1ae:	82 27       	eor	r24, r18
+ 1b0:	85 b9       	out	0x05, r24	; 5
+				PORTB ^= LEDPWM;
+			}
+			OCR0A=val/255;
+		}
+
+		while(contorTimer0 >= 990)
+ 1b2:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <contorTimer0>
+ 1b6:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <contorTimer0+0x1>
+ 1ba:	8e 3d       	cpi	r24, 0xDE	; 222
+ 1bc:	93 40       	sbci	r25, 0x03	; 3
+ 1be:	94 f7       	brge	.-28     	; 0x1a4 <main+0x104>
+ 1c0:	7a cf       	rjmp	.-268    	; 0xb6 <main+0x16>
+
+000001c2 <__vector_16>:
+	
+	}
+}
+
+ISR(TIMER0_OVF_vect)
+{
+ 1c2:	1f 92       	push	r1
+ 1c4:	0f 92       	push	r0
+ 1c6:	0f b6       	in	r0, 0x3f	; 63
+ 1c8:	0f 92       	push	r0
+ 1ca:	11 24       	eor	r1, r1
+ 1cc:	8f 93       	push	r24
+ 1ce:	9f 93       	push	r25
+	contorTimer0++;
+ 1d0:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <contorTimer0>
+ 1d4:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <contorTimer0+0x1>
+ 1d8:	01 96       	adiw	r24, 0x01	; 1
+ 1da:	90 93 03 01 	sts	0x0103, r25	; 0x800103 <contorTimer0+0x1>
+ 1de:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <contorTimer0>
+}
+ 1e2:	9f 91       	pop	r25
+ 1e4:	8f 91       	pop	r24
+ 1e6:	0f 90       	pop	r0
+ 1e8:	0f be       	out	0x3f, r0	; 63
+ 1ea:	0f 90       	pop	r0
+ 1ec:	1f 90       	pop	r1
+ 1ee:	18 95       	reti
+
+000001f0 <__divmodhi4>:
+ 1f0:	97 fb       	bst	r25, 7
+ 1f2:	07 2e       	mov	r0, r23
+ 1f4:	16 f4       	brtc	.+4      	; 0x1fa <__divmodhi4+0xa>
+ 1f6:	00 94       	com	r0
+ 1f8:	07 d0       	rcall	.+14     	; 0x208 <__divmodhi4_neg1>
+ 1fa:	77 fd       	sbrc	r23, 7
+ 1fc:	09 d0       	rcall	.+18     	; 0x210 <__divmodhi4_neg2>
+ 1fe:	0e 94 0c 01 	call	0x218	; 0x218 <__udivmodhi4>
+ 202:	07 fc       	sbrc	r0, 7
+ 204:	05 d0       	rcall	.+10     	; 0x210 <__divmodhi4_neg2>
+ 206:	3e f4       	brtc	.+14     	; 0x216 <__divmodhi4_exit>
+
+00000208 <__divmodhi4_neg1>:
+ 208:	90 95       	com	r25
+ 20a:	81 95       	neg	r24
+ 20c:	9f 4f       	sbci	r25, 0xFF	; 255
+ 20e:	08 95       	ret
+
+00000210 <__divmodhi4_neg2>:
+ 210:	70 95       	com	r23
+ 212:	61 95       	neg	r22
+ 214:	7f 4f       	sbci	r23, 0xFF	; 255
+
+00000216 <__divmodhi4_exit>:
+ 216:	08 95       	ret
+
+00000218 <__udivmodhi4>:
+ 218:	aa 1b       	sub	r26, r26
+ 21a:	bb 1b       	sub	r27, r27
+ 21c:	51 e1       	ldi	r21, 0x11	; 17
+ 21e:	07 c0       	rjmp	.+14     	; 0x22e <__udivmodhi4_ep>
+
+00000220 <__udivmodhi4_loop>:
+ 220:	aa 1f       	adc	r26, r26
+ 222:	bb 1f       	adc	r27, r27
+ 224:	a6 17       	cp	r26, r22
+ 226:	b7 07       	cpc	r27, r23
+ 228:	10 f0       	brcs	.+4      	; 0x22e <__udivmodhi4_ep>
+ 22a:	a6 1b       	sub	r26, r22
+ 22c:	b7 0b       	sbc	r27, r23
+
+0000022e <__udivmodhi4_ep>:
+ 22e:	88 1f       	adc	r24, r24
+ 230:	99 1f       	adc	r25, r25
+ 232:	5a 95       	dec	r21
+ 234:	a9 f7       	brne	.-22     	; 0x220 <__udivmodhi4_loop>
+ 236:	80 95       	com	r24
+ 238:	90 95       	com	r25
+ 23a:	bc 01       	movw	r22, r24
+ 23c:	cd 01       	movw	r24, r26
+ 23e:	08 95       	ret
+
+00000240 <_exit>:
+ 240:	f8 94       	cli
+
+00000242 <__stop_program>:
+ 242:	ff cf       	rjmp	.-2      	; 0x242 <__stop_program>

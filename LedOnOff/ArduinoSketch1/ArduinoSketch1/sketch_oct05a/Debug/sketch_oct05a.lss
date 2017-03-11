@@ -1,0 +1,444 @@
+
+sketch_oct05a.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  000002e4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000270  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000009  00800100  00800100  000002e4  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000002e4  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000314  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000c0  00000000  00000000  00000354  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000c67  00000000  00000000  00000414  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000008a4  00000000  00000000  0000107b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000689  00000000  00000000  0000191f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000158  00000000  00000000  00001fa8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000005ea  00000000  00000000  00002100  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000026f  00000000  00000000  000026ea  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000080  00000000  00000000  00002959  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__vector_16>
+  44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	21 e0       	ldi	r18, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a9 30       	cpi	r26, 0x09	; 9
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 54 00 	call	0xa8	; 0xa8 <main>
+  88:	0c 94 36 01 	jmp	0x26c	; 0x26c <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <setup>:
+//End of Auto generated function prototypes by Atmel Studio
+
+void setup()
+{
+  // put your setup code here, to run once:
+  DDRD |= 0xFF;
+  90:	8a b1       	in	r24, 0x0a	; 10
+  92:	8f ef       	ldi	r24, 0xFF	; 255
+  94:	8a b9       	out	0x0a, r24	; 10
+  96:	08 95       	ret
+
+00000098 <loop>:
+}
+
+void loop() 
+{
+  // put your main code here, to run repeatedly:
+  PORTD |= 0x04;
+  98:	5a 9a       	sbi	0x0b, 2	; 11
+  delay(500);
+  9a:	64 ef       	ldi	r22, 0xF4	; 244
+  9c:	71 e0       	ldi	r23, 0x01	; 1
+  9e:	80 e0       	ldi	r24, 0x00	; 0
+  a0:	90 e0       	ldi	r25, 0x00	; 0
+  a2:	0c 94 d2 00 	jmp	0x1a4	; 0x1a4 <delay>
+
+000000a6 <initVariant>:
+int atexit(void (*func)()) { return 0; }
+
+// Weak empty variant initialization function.
+// May be redefined by variant files.
+void initVariant() __attribute__((weak));
+void initVariant() { }
+  a6:	08 95       	ret
+
+000000a8 <main>:
+
+int main(void)
+{
+	init();
+  a8:	0e 94 fa 00 	call	0x1f4	; 0x1f4 <init>
+
+	initVariant();
+  ac:	0e 94 53 00 	call	0xa6	; 0xa6 <initVariant>
+
+#if defined(USBCON)
+	USBDevice.attach();
+#endif
+	
+	setup();
+  b0:	0e 94 48 00 	call	0x90	; 0x90 <setup>
+    
+	for (;;) {
+		loop();
+		if (serialEventRun) serialEventRun();
+  b4:	c0 e0       	ldi	r28, 0x00	; 0
+  b6:	d0 e0       	ldi	r29, 0x00	; 0
+#endif
+	
+	setup();
+    
+	for (;;) {
+		loop();
+  b8:	0e 94 4c 00 	call	0x98	; 0x98 <loop>
+		if (serialEventRun) serialEventRun();
+  bc:	20 97       	sbiw	r28, 0x00	; 0
+  be:	e1 f3       	breq	.-8      	; 0xb8 <main+0x10>
+  c0:	0e 94 00 00 	call	0	; 0x0 <__vectors>
+  c4:	f9 cf       	rjmp	.-14     	; 0xb8 <main+0x10>
+
+000000c6 <__vector_16>:
+	// we can't subtract any more than this or we'd overflow w/ small delays.
+	us--;
+#endif
+
+	// busy wait
+	__asm__ __volatile__ (
+  c6:	1f 92       	push	r1
+  c8:	0f 92       	push	r0
+  ca:	0f b6       	in	r0, 0x3f	; 63
+  cc:	0f 92       	push	r0
+  ce:	11 24       	eor	r1, r1
+  d0:	2f 93       	push	r18
+  d2:	3f 93       	push	r19
+  d4:	8f 93       	push	r24
+  d6:	9f 93       	push	r25
+  d8:	af 93       	push	r26
+  da:	bf 93       	push	r27
+  dc:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <timer0_millis>
+  e0:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <timer0_millis+0x1>
+  e4:	a0 91 03 01 	lds	r26, 0x0103	; 0x800103 <timer0_millis+0x2>
+  e8:	b0 91 04 01 	lds	r27, 0x0104	; 0x800104 <timer0_millis+0x3>
+  ec:	30 91 00 01 	lds	r19, 0x0100	; 0x800100 <_edata>
+  f0:	23 e0       	ldi	r18, 0x03	; 3
+  f2:	23 0f       	add	r18, r19
+  f4:	2d 37       	cpi	r18, 0x7D	; 125
+  f6:	20 f4       	brcc	.+8      	; 0x100 <__vector_16+0x3a>
+  f8:	01 96       	adiw	r24, 0x01	; 1
+  fa:	a1 1d       	adc	r26, r1
+  fc:	b1 1d       	adc	r27, r1
+  fe:	05 c0       	rjmp	.+10     	; 0x10a <__vector_16+0x44>
+ 100:	26 e8       	ldi	r18, 0x86	; 134
+ 102:	23 0f       	add	r18, r19
+ 104:	02 96       	adiw	r24, 0x02	; 2
+ 106:	a1 1d       	adc	r26, r1
+ 108:	b1 1d       	adc	r27, r1
+ 10a:	20 93 00 01 	sts	0x0100, r18	; 0x800100 <_edata>
+ 10e:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <timer0_millis>
+ 112:	90 93 02 01 	sts	0x0102, r25	; 0x800102 <timer0_millis+0x1>
+ 116:	a0 93 03 01 	sts	0x0103, r26	; 0x800103 <timer0_millis+0x2>
+ 11a:	b0 93 04 01 	sts	0x0104, r27	; 0x800104 <timer0_millis+0x3>
+ 11e:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <timer0_overflow_count>
+ 122:	90 91 06 01 	lds	r25, 0x0106	; 0x800106 <timer0_overflow_count+0x1>
+ 126:	a0 91 07 01 	lds	r26, 0x0107	; 0x800107 <timer0_overflow_count+0x2>
+ 12a:	b0 91 08 01 	lds	r27, 0x0108	; 0x800108 <timer0_overflow_count+0x3>
+ 12e:	01 96       	adiw	r24, 0x01	; 1
+ 130:	a1 1d       	adc	r26, r1
+ 132:	b1 1d       	adc	r27, r1
+ 134:	80 93 05 01 	sts	0x0105, r24	; 0x800105 <timer0_overflow_count>
+ 138:	90 93 06 01 	sts	0x0106, r25	; 0x800106 <timer0_overflow_count+0x1>
+ 13c:	a0 93 07 01 	sts	0x0107, r26	; 0x800107 <timer0_overflow_count+0x2>
+ 140:	b0 93 08 01 	sts	0x0108, r27	; 0x800108 <timer0_overflow_count+0x3>
+ 144:	bf 91       	pop	r27
+ 146:	af 91       	pop	r26
+ 148:	9f 91       	pop	r25
+ 14a:	8f 91       	pop	r24
+ 14c:	3f 91       	pop	r19
+ 14e:	2f 91       	pop	r18
+ 150:	0f 90       	pop	r0
+ 152:	0f be       	out	0x3f, r0	; 63
+ 154:	0f 90       	pop	r0
+ 156:	1f 90       	pop	r1
+ 158:	18 95       	reti
+
+0000015a <micros>:
+ 15a:	3f b7       	in	r19, 0x3f	; 63
+ 15c:	f8 94       	cli
+ 15e:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <timer0_overflow_count>
+ 162:	90 91 06 01 	lds	r25, 0x0106	; 0x800106 <timer0_overflow_count+0x1>
+ 166:	a0 91 07 01 	lds	r26, 0x0107	; 0x800107 <timer0_overflow_count+0x2>
+ 16a:	b0 91 08 01 	lds	r27, 0x0108	; 0x800108 <timer0_overflow_count+0x3>
+ 16e:	26 b5       	in	r18, 0x26	; 38
+ 170:	a8 9b       	sbis	0x15, 0	; 21
+ 172:	05 c0       	rjmp	.+10     	; 0x17e <micros+0x24>
+ 174:	2f 3f       	cpi	r18, 0xFF	; 255
+ 176:	19 f0       	breq	.+6      	; 0x17e <micros+0x24>
+ 178:	01 96       	adiw	r24, 0x01	; 1
+ 17a:	a1 1d       	adc	r26, r1
+ 17c:	b1 1d       	adc	r27, r1
+ 17e:	3f bf       	out	0x3f, r19	; 63
+ 180:	ba 2f       	mov	r27, r26
+ 182:	a9 2f       	mov	r26, r25
+ 184:	98 2f       	mov	r25, r24
+ 186:	88 27       	eor	r24, r24
+ 188:	82 0f       	add	r24, r18
+ 18a:	91 1d       	adc	r25, r1
+ 18c:	a1 1d       	adc	r26, r1
+ 18e:	b1 1d       	adc	r27, r1
+ 190:	bc 01       	movw	r22, r24
+ 192:	cd 01       	movw	r24, r26
+ 194:	42 e0       	ldi	r20, 0x02	; 2
+ 196:	66 0f       	add	r22, r22
+ 198:	77 1f       	adc	r23, r23
+ 19a:	88 1f       	adc	r24, r24
+ 19c:	99 1f       	adc	r25, r25
+ 19e:	4a 95       	dec	r20
+ 1a0:	d1 f7       	brne	.-12     	; 0x196 <micros+0x3c>
+ 1a2:	08 95       	ret
+
+000001a4 <delay>:
+ 1a4:	cf 92       	push	r12
+ 1a6:	df 92       	push	r13
+ 1a8:	ef 92       	push	r14
+ 1aa:	ff 92       	push	r15
+ 1ac:	cf 93       	push	r28
+ 1ae:	df 93       	push	r29
+ 1b0:	6b 01       	movw	r12, r22
+ 1b2:	7c 01       	movw	r14, r24
+ 1b4:	0e 94 ad 00 	call	0x15a	; 0x15a <micros>
+ 1b8:	eb 01       	movw	r28, r22
+ 1ba:	c1 14       	cp	r12, r1
+ 1bc:	d1 04       	cpc	r13, r1
+ 1be:	e1 04       	cpc	r14, r1
+ 1c0:	f1 04       	cpc	r15, r1
+ 1c2:	89 f0       	breq	.+34     	; 0x1e6 <delay+0x42>
+ 1c4:	0e 94 35 01 	call	0x26a	; 0x26a <yield>
+ 1c8:	0e 94 ad 00 	call	0x15a	; 0x15a <micros>
+ 1cc:	6c 1b       	sub	r22, r28
+ 1ce:	7d 0b       	sbc	r23, r29
+ 1d0:	68 3e       	cpi	r22, 0xE8	; 232
+ 1d2:	73 40       	sbci	r23, 0x03	; 3
+ 1d4:	90 f3       	brcs	.-28     	; 0x1ba <delay+0x16>
+ 1d6:	81 e0       	ldi	r24, 0x01	; 1
+ 1d8:	c8 1a       	sub	r12, r24
+ 1da:	d1 08       	sbc	r13, r1
+ 1dc:	e1 08       	sbc	r14, r1
+ 1de:	f1 08       	sbc	r15, r1
+ 1e0:	c8 51       	subi	r28, 0x18	; 24
+ 1e2:	dc 4f       	sbci	r29, 0xFC	; 252
+ 1e4:	ea cf       	rjmp	.-44     	; 0x1ba <delay+0x16>
+ 1e6:	df 91       	pop	r29
+ 1e8:	cf 91       	pop	r28
+ 1ea:	ff 90       	pop	r15
+ 1ec:	ef 90       	pop	r14
+ 1ee:	df 90       	pop	r13
+ 1f0:	cf 90       	pop	r12
+ 1f2:	08 95       	ret
+
+000001f4 <init>:
+
+void init()
+{
+	// this needs to be called before setup() or some functions won't
+	// work there
+	sei();
+ 1f4:	78 94       	sei
+	
+	// on the ATmega168, timer 0 is also used for fast hardware pwm
+	// (using phase-correct PWM would mean that timer 0 overflowed half as often
+	// resulting in different millis() behavior on the ATmega8 and ATmega168)
+#if defined(TCCR0A) && defined(WGM01)
+	sbi(TCCR0A, WGM01);
+ 1f6:	84 b5       	in	r24, 0x24	; 36
+ 1f8:	82 60       	ori	r24, 0x02	; 2
+ 1fa:	84 bd       	out	0x24, r24	; 36
+	sbi(TCCR0A, WGM00);
+ 1fc:	84 b5       	in	r24, 0x24	; 36
+ 1fe:	81 60       	ori	r24, 0x01	; 1
+ 200:	84 bd       	out	0x24, r24	; 36
+	// this combination is for the standard atmega8
+	sbi(TCCR0, CS01);
+	sbi(TCCR0, CS00);
+#elif defined(TCCR0B) && defined(CS01) && defined(CS00)
+	// this combination is for the standard 168/328/1280/2560
+	sbi(TCCR0B, CS01);
+ 202:	85 b5       	in	r24, 0x25	; 37
+ 204:	82 60       	ori	r24, 0x02	; 2
+ 206:	85 bd       	out	0x25, r24	; 37
+	sbi(TCCR0B, CS00);
+ 208:	85 b5       	in	r24, 0x25	; 37
+ 20a:	81 60       	ori	r24, 0x01	; 1
+ 20c:	85 bd       	out	0x25, r24	; 37
+
+	// enable timer 0 overflow interrupt
+#if defined(TIMSK) && defined(TOIE0)
+	sbi(TIMSK, TOIE0);
+#elif defined(TIMSK0) && defined(TOIE0)
+	sbi(TIMSK0, TOIE0);
+ 20e:	ee e6       	ldi	r30, 0x6E	; 110
+ 210:	f0 e0       	ldi	r31, 0x00	; 0
+ 212:	80 81       	ld	r24, Z
+ 214:	81 60       	ori	r24, 0x01	; 1
+ 216:	80 83       	st	Z, r24
+	// this is better for motors as it ensures an even waveform
+	// note, however, that fast pwm mode can achieve a frequency of up
+	// 8 MHz (with a 16 MHz clock) at 50% duty cycle
+
+#if defined(TCCR1B) && defined(CS11) && defined(CS10)
+	TCCR1B = 0;
+ 218:	e1 e8       	ldi	r30, 0x81	; 129
+ 21a:	f0 e0       	ldi	r31, 0x00	; 0
+ 21c:	10 82       	st	Z, r1
+
+	// set timer 1 prescale factor to 64
+	sbi(TCCR1B, CS11);
+ 21e:	80 81       	ld	r24, Z
+ 220:	82 60       	ori	r24, 0x02	; 2
+ 222:	80 83       	st	Z, r24
+#if F_CPU >= 8000000L
+	sbi(TCCR1B, CS10);
+ 224:	80 81       	ld	r24, Z
+ 226:	81 60       	ori	r24, 0x01	; 1
+ 228:	80 83       	st	Z, r24
+	sbi(TCCR1, CS10);
+#endif
+#endif
+	// put timer 1 in 8-bit phase correct pwm mode
+#if defined(TCCR1A) && defined(WGM10)
+	sbi(TCCR1A, WGM10);
+ 22a:	e0 e8       	ldi	r30, 0x80	; 128
+ 22c:	f0 e0       	ldi	r31, 0x00	; 0
+ 22e:	80 81       	ld	r24, Z
+ 230:	81 60       	ori	r24, 0x01	; 1
+ 232:	80 83       	st	Z, r24
+
+	// set timer 2 prescale factor to 64
+#if defined(TCCR2) && defined(CS22)
+	sbi(TCCR2, CS22);
+#elif defined(TCCR2B) && defined(CS22)
+	sbi(TCCR2B, CS22);
+ 234:	e1 eb       	ldi	r30, 0xB1	; 177
+ 236:	f0 e0       	ldi	r31, 0x00	; 0
+ 238:	80 81       	ld	r24, Z
+ 23a:	84 60       	ori	r24, 0x04	; 4
+ 23c:	80 83       	st	Z, r24
+
+	// configure timer 2 for phase correct pwm (8-bit)
+#if defined(TCCR2) && defined(WGM20)
+	sbi(TCCR2, WGM20);
+#elif defined(TCCR2A) && defined(WGM20)
+	sbi(TCCR2A, WGM20);
+ 23e:	e0 eb       	ldi	r30, 0xB0	; 176
+ 240:	f0 e0       	ldi	r31, 0x00	; 0
+ 242:	80 81       	ld	r24, Z
+ 244:	81 60       	ori	r24, 0x01	; 1
+ 246:	80 83       	st	Z, r24
+#if defined(ADCSRA)
+	// set a2d prescale factor to 128
+	// 16 MHz / 128 = 125 KHz, inside the desired 50-200 KHz range.
+	// XXX: this will not work properly for other clock speeds, and
+	// this code should use F_CPU to determine the prescale factor.
+	sbi(ADCSRA, ADPS2);
+ 248:	ea e7       	ldi	r30, 0x7A	; 122
+ 24a:	f0 e0       	ldi	r31, 0x00	; 0
+ 24c:	80 81       	ld	r24, Z
+ 24e:	84 60       	ori	r24, 0x04	; 4
+ 250:	80 83       	st	Z, r24
+	sbi(ADCSRA, ADPS1);
+ 252:	80 81       	ld	r24, Z
+ 254:	82 60       	ori	r24, 0x02	; 2
+ 256:	80 83       	st	Z, r24
+	sbi(ADCSRA, ADPS0);
+ 258:	80 81       	ld	r24, Z
+ 25a:	81 60       	ori	r24, 0x01	; 1
+ 25c:	80 83       	st	Z, r24
+
+	// enable a2d conversions
+	sbi(ADCSRA, ADEN);
+ 25e:	80 81       	ld	r24, Z
+ 260:	80 68       	ori	r24, 0x80	; 128
+ 262:	80 83       	st	Z, r24
+	// here so they can be used as normal digital i/o; they will be
+	// reconnected in Serial.begin()
+#if defined(UCSRB)
+	UCSRB = 0;
+#elif defined(UCSR0B)
+	UCSR0B = 0;
+ 264:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
+ 268:	08 95       	ret
+
+0000026a <yield>:
+ * libraries or sketches that supports cooperative threads.
+ *
+ * Its defined as a weak symbol and it can be redefined to implement a
+ * real cooperative scheduler.
+ */
+static void __empty() {
+ 26a:	08 95       	ret
+
+0000026c <_exit>:
+ 26c:	f8 94       	cli
+
+0000026e <__stop_program>:
+ 26e:	ff cf       	rjmp	.-2      	; 0x26e <__stop_program>
